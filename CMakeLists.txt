@@ -7,6 +7,8 @@ HunterGate(
 )
 
 project(Qwt VERSION 6.1.3)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 option(LIBQWT_ENABLE_PLOT "Build plot support" ON)
 option(LIBQWT_ENABLE_WIDGETS "Build widgets support" ON)
