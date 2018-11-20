@@ -117,7 +117,7 @@ if(LIBQWT_ENABLE_WIDGETS)
     )
 endif()
 
-add_library(qwt ${SOURCES}
+add_library(qwt ${SOURCES})
 target_include_directories(qwt PUBLIC .)
 target_link_libraries(qwt ${QT_LIBS})
 
