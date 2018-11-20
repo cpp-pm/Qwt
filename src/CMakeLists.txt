@@ -122,9 +122,9 @@ target_include_directories(qwt PUBLIC .)
 target_link_libraries(qwt ${QT_LIBS})
 
 install(TARGETS qwt 
- # EXPORT ${targets_export_name}
+  EXPORT ${targets_export_name}
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin
-  #INCLUDES DESTINATION ${include_install_dir}
+  INCLUDES DESTINATION ${include_install_dir}
 )
