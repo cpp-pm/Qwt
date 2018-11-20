@@ -117,38 +117,8 @@ if(LIBQWT_ENABLE_WIDGETS)
     )
 endif()
 
-set(MOC_HEADERS
-    qwt_abstract_legend.h
-    qwt_abstract_scale.h
-    qwt_abstract_slider.h
-    qwt_analog_clock.h
-    qwt_compass.h
-    qwt_counter.h
-    qwt_dial.h
-    qwt_dyngrid_layout.h
-    qwt_knob.h
-    qwt_legend.h
-    qwt_legend_label.h
-    qwt_magnifier.h
-    qwt_panner.h
-    qwt_picker.h
-    qwt_plot.h
-    qwt_plot_canvas.h
-    qwt_plot_glcanvas.h
-    qwt_plot_magnifier.h
-    qwt_plot_panner.h
-    qwt_plot_picker.h
-    qwt_plot_renderer.h
-    qwt_plot_zoomer.h
-    qwt_sampling_thread.h
-    qwt_scale_widget.h
-    qwt_slider.h
-    qwt_text_label.h
-    qwt_thermo.h
-    qwt_wheel.h
-)
-qt5_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
-add_library(qwt ${SOURCES} ${MOC_SOURCES})
+add_library(qwt ${SOURCES}
+target_include_directories(qwt PUBLIC .)
 target_link_libraries(qwt ${QT_LIBS})
 
 install(TARGETS qwt 
