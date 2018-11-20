@@ -37,6 +37,16 @@ write_basic_package_version_file(
     INSTALL_DESTINATION "${config_install_dir}"
 )
 
+install(
+    FILES "${project_config}" "${version_config}"
+    DESTINATION "${config_install_dir}"
+)
+
+install(
+    EXPORT "${targets_export_name}"
+    NAMESPACE "${namespace}"
+    DESTINATION "${config_install_dir}"
+)
 include_directories(src)
 hunter_add_package(Qt)
 
@@ -86,13 +96,3 @@ endif()
 
 add_subdirectory(src)
 add_subdirectory(textengines)
-install(
-    FILES "${project_config}" "${version_config}"
-    DESTINATION "${config_install_dir}"
-)
-install(
-    EXPORT "${targets_export_name}"
-    NAMESPACE "${namespace}"
-    DESTINATION "${config_install_dir}"
-)
-
