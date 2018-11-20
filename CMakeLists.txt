@@ -42,11 +42,11 @@ install(
     DESTINATION "${config_install_dir}"
 )
 
-#install(
-#    EXPORT "${targets_export_name}"
-#    NAMESPACE "${namespace}"
-#    DESTINATION "${config_install_dir}"
-#)
+install(
+    EXPORT "${targets_export_name}"
+    NAMESPACE "${namespace}"
+    DESTINATION "${config_install_dir}"
+)
 
 hunter_add_package(Qt)
 
