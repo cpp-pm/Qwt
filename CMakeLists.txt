@@ -42,12 +42,12 @@ install(
     DESTINATION "${config_install_dir}"
 )
 
-install(
-    EXPORT "${targets_export_name}"
-    NAMESPACE "${namespace}"
-    DESTINATION "${config_install_dir}"
-)
-include_directories(src)
+#install(
+#    EXPORT "${targets_export_name}"
+#    NAMESPACE "${namespace}"
+#    DESTINATION "${config_install_dir}"
+#)
+
 hunter_add_package(Qt)
 
 find_package(Qt5Core REQUIRED)
@@ -93,6 +93,6 @@ endif()
 if(WIN32)
 	add_definitions(-DQT_DLL -DQWT_DLL -DQWT_MAKEDLL)
 endif()
-
+include_directories(src)
 add_subdirectory(src)
 add_subdirectory(textengines)
