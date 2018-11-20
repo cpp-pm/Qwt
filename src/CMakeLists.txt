@@ -118,12 +118,13 @@ if(LIBQWT_ENABLE_WIDGETS)
 endif()
 
 add_library(qwt ${SOURCES})
+include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>")
 target_link_libraries(qwt ${QT_LIBS})
 
 install(TARGETS qwt 
-  EXPORT ${targets_export_name}
+ # EXPORT ${targets_export_name}
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
-  RUNTIME DESTINATION bin
-  INCLUDES DESTINATION ${include_install_dir}
+  #RUNTIME DESTINATION bin
+  #INCLUDES DESTINATION ${include_install_dir}
 )
