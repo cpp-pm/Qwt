@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-include("CMake/HunterGate.cmake")
+include("cmake/HunterGate.cmake")
 HunterGate(
     URL "https://github.com/ruslo/hunter/archive/v0.23.34.tar.gz"
     SHA1 "70287b1ffa810ee4e952052a9adff9b4856d0d54"
@@ -179,40 +179,13 @@ if(LIBQWT_ENABLE_WIDGETS)
     src/qwt_wheel.cpp
     )
 endif()
-set(HEADERS
-    src/qwt_abstract_legend.h
-    src/qwt_abstract_scale.h
-    src/qwt_abstract_slider.h
-    src/qwt_analog_clock.h
-    src/qwt_compass.h
-    src/qwt_counter.h
-    src/qwt_dial.h
-    src/qwt_dyngrid_layout.h
-    src/qwt_knob.h
-    src/qwt_legend.h
-    src/qwt_legend_label.h
-    src/qwt_magnifier.h
-    src/qwt_panner.h
-    src/qwt_picker.h
-    src/qwt_plot.h
-    src/qwt_plot_canvas.h
-    src/qwt_plot_glcanvas.h
-    src/qwt_plot_magnifier.h
-    src/qwt_plot_panner.h
-    src/qwt_plot_picker.h
-    src/qwt_plot_renderer.h
-    src/qwt_plot_zoomer.h
-    src/qwt_sampling_thread.h
-    src/qwt_scale_widget.h
-    src/qwt_slider.h
-    src/qwt_text_label.h
-    src/qwt_thermo.h
-    src/qwt_wheel.h
-)
+
 add_subdirectory(textengines)
 
 add_library(qwt ${SOURCES})
-include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>")
+
+include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>")
+
 target_link_libraries(qwt ${QT_LIBS})
 set_property(TARGET qwt PROPERTY SOVERSION ${PROJECT_VERSION})
 include(GNUInstallDirs)
@@ -231,7 +204,7 @@ write_basic_package_version_file(
 )
  
  configure_package_config_file(
-    "CMake/Config.cmake.in"
+    "cmake/Config.cmake.in"
     "${project_config}"
     INSTALL_DESTINATION "${config_install_dir}"
 )
