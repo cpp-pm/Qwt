@@ -212,7 +212,7 @@ set(HEADERS
 #set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_library(qwt ${SOURCES} ${HEADERS})
-include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>")
+include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>")
 target_link_libraries(qwt ${QT_LIBS})
 
 include(GNUInstallDirs)
