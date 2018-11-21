@@ -12,7 +12,6 @@ if(@LIBQWT_ENABLE_SVG@)
 endif()
 
 find_package(Qt5PrintSupport REQUIRED)
-
 find_package(Qt5Concurrent REQUIRED)
 
 if(@LIBQWT_ENABLE_OPENGL@)
