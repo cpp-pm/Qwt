@@ -9,11 +9,11 @@ HunterGate(
 project(Qwt VERSION 6.1.3)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-option(LIBQWT_ENABLE_PLOT "Build plot support" ON)
-option(LIBQWT_ENABLE_WIDGETS "Build widgets support" ON)
-option(LIBQWT_ENABLE_MATHML "Build MathML support" OFF)
-option(LIBQWT_ENABLE_OPENGL "Build OpenGL support" ON)
-option(LIBQWT_ENABLE_SVG "Build SVG support" ON)
+#option(LIBQWT_ENABLE_PLOT "Build plot support" ON)
+#option(LIBQWT_ENABLE_WIDGETS "Build widgets support" ON)
+#option(LIBQWT_ENABLE_MATHML "Build MathML support" OFF)
+#option(LIBQWT_ENABLE_OPENGL "Build OpenGL support" ON)
+#option(LIBQWT_ENABLE_SVG "Build SVG support" ON)
 
 hunter_add_package(Qt)
 
@@ -183,12 +183,13 @@ endif()
 add_subdirectory(textengines)
 
 add_library(qwt ${SOURCES})
-
 include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>")
-
 target_link_libraries(qwt ${QT_LIBS})
+
 set_property(TARGET qwt PROPERTY SOVERSION ${PROJECT_VERSION})
+
 include(GNUInstallDirs)
+
 set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
 set(config_install_dir "lib/cmake/${PROJECT_NAME}")
 set(include_install_dir "include")
@@ -204,7 +205,7 @@ write_basic_package_version_file(
 )
  
  configure_package_config_file(
-    "cmake/Config.cmake.in"
+    "cmake/config.cmake.in"
     "${project_config}"
     INSTALL_DESTINATION "${config_install_dir}"
 )
@@ -231,5 +232,3 @@ install(
     NAMESPACE "${namespace}"
     DESTINATION "${config_install_dir}"
 )
-
-
