@@ -147,7 +147,7 @@ set(HEADERS
     qwt_wheel.h
 )
 
-add_library(qwt ${SOURCES})
+add_library(qwt ${SOURCES} ${HEADERS})
 include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>")
 target_link_libraries(qwt ${QT_LIBS})
 
