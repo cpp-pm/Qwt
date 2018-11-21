@@ -214,7 +214,7 @@ set(HEADERS
 add_library(qwt ${SOURCES} ${HEADERS})
 include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>")
 target_link_libraries(qwt ${QT_LIBS})
-
+set_property(TARGET qwt PROPERTY SOVERSION ${PROJECT_VERSION})
 include(GNUInstallDirs)
 set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
 set(config_install_dir "lib/cmake/${PROJECT_NAME}")
@@ -244,8 +244,10 @@ install(TARGETS qwt
   INCLUDES DESTINATION ${include_install_dir}
 )
 install(
-    FILES ${TOMMATH_HEADERS}
-    DESTINATION "${include_install_dir}/Qwt"
+    #FILES ${TOMMATH_HEADERS}
+    DIRECTORY "include/"
+    DESTINATION "${include_install_dir}"
+    FILES_MATCHING PATTERN "*.h"
 )
 
 install(
