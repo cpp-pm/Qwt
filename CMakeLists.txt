@@ -240,14 +240,14 @@ install(TARGETS qwt
   EXPORT ${targets_export_name}
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
-  RUNTIME DESTINATION bin
+  #RUNTIME DESTINATION bin
   INCLUDES DESTINATION ${include_install_dir}
 )
 install(
-    #FILES ${TOMMATH_HEADERS}
-    DIRECTORY "include/"
+    FILES ${HEADERS}
+    #DIRECTORY "include/"
     DESTINATION "${include_install_dir}"
-    FILES_MATCHING PATTERN "*.h"
+    #FILES_MATCHING PATTERN "*.h"
 )
 
 install(
