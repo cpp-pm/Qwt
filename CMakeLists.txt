@@ -243,7 +243,7 @@ install(TARGETS qwt
   INCLUDES DESTINATION ${include_install_dir}
 )
 install(
-    DIRECTORY src
+    DIRECTORY src/
     DESTINATION ${include_install_dir}
     FILES_MATCHING PATTERN "*.h"
 )
