@@ -7,7 +7,8 @@ HunterGate(
 )
 
 project(Qwt VERSION 6.1.3)
-
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 option(LIBQWT_ENABLE_PLOT "Build plot support" ON)
 option(LIBQWT_ENABLE_WIDGETS "Build widgets support" ON)
 option(LIBQWT_ENABLE_MATHML "Build MathML support" OFF)
@@ -59,7 +60,7 @@ endif()
 if(WIN32)
 	add_definitions(-DQT_DLL -DQWT_DLL -DQWT_MAKEDLL)
 endif()
-add_subdirectory(textengines)
+
 list(APPEND SOURCES 
  	src/qwt_abstract_scale_draw.cpp
     src/qwt_clipper.cpp
@@ -208,11 +209,10 @@ set(HEADERS
     src/qwt_thermo.h
     src/qwt_wheel.h
 )
-#set(CMAKE_AUTOMOC ON)
-#set(CMAKE_INCLUDE_CURRENT_DIR ON)
+add_subdirectory(textengines)
 
-add_library(qwt ${SOURCES} ${HEADERS})
-include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>")
+add_library(qwt ${SOURCES})
+include_directories(qwt PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>")
 target_link_libraries(qwt ${QT_LIBS})
 set_property(TARGET qwt PROPERTY SOVERSION ${PROJECT_VERSION})
 include(GNUInstallDirs)
@@ -240,14 +240,12 @@ install(TARGETS qwt
   EXPORT ${targets_export_name}
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
-  #RUNTIME DESTINATION bin
   INCLUDES DESTINATION ${include_install_dir}
 )
 install(
-    FILES ${HEADERS}
-    #DIRECTORY "include/"
-    DESTINATION "${include_install_dir}"
-    #FILES_MATCHING PATTERN "*.h"
+    DIRECTORY src
+    DESTINATION ${include_install_dir}
+    FILES_MATCHING PATTERN "*.h"
 )
 
 install(
@@ -261,8 +259,4 @@ install(
     DESTINATION "${config_install_dir}"
 )
 
-
-
-#include_directories(src)
-#add_subdirectory(src)
 
